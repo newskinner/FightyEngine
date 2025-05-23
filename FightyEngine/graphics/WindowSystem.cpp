@@ -1,7 +1,11 @@
 #include "WindowSystem.h"
 #include "../miacra/Util.h"
 
-WindowSystem::WindowSystem(const std::string &title) : title(title), window(nullptr) {}
+WindowSystem::WindowSystem() : title(std::string()), window(nullptr)
+{
+    const std::string year = Util::GetCurrentTime("%Y");
+    SetTitle("Fighty 3D FPS (" + year + ") by NEWSKINNER. The AGPL-3.0 LICENSE");
+}
 
 WindowSystem::~WindowSystem()
 {

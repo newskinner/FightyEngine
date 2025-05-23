@@ -1,8 +1,8 @@
 #include "Engine.h"
 #include "Util.h"
 
-Engine::Engine(const std::string &gameTitle)
-    : isRunning(false), lastFrameTime(0.0f), title(gameTitle), windowSystem(nullptr), renderer(nullptr) {}
+Engine::Engine()
+    : isRunning(false), lastFrameTime(0.0f), windowSystem(nullptr), renderer(nullptr) {}
 
 Engine::~Engine() { Shutdown(); }
 
@@ -10,7 +10,7 @@ bool Engine::Init()
 {
   Util::Log("Engine::Init() started");
 
-  windowSystem = new WindowSystem(title);
+  windowSystem = new WindowSystem();
   if (!windowSystem->Init())
   {
     Util::LogError("WindowSystem::Init() failed");

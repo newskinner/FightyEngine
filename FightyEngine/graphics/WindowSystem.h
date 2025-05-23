@@ -6,7 +6,7 @@
 class WindowSystem
 {
 public:
-    WindowSystem(const std::string &title);
+    WindowSystem();
     ~WindowSystem();
 
     bool Init();

@@ -11,7 +11,7 @@ class Renderer;
 class Engine
 {
 public:
-  Engine(const std::string &gameTitle = "Fighty");
+  Engine();
   ~Engine();
 
   bool Init();
@@ -26,7 +26,6 @@ private:
 
   bool isRunning;
   float lastFrameTime;
-  std::string title;
 
   WindowSystem *windowSystem;
   Renderer *renderer;
