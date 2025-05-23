@@ -2,6 +2,7 @@
 
 using std::string;
 using std::unordered_map;
+using std::filesystem::path;
 
 namespace ConfigManager
 {
