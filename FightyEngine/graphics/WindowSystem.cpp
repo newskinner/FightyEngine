@@ -1,5 +1,4 @@
 #include "WindowSystem.h"
-#include "../miacra/Util.h"
 
 WindowSystem::WindowSystem() : title(std::string()), window(nullptr)
 {
@@ -16,6 +15,13 @@ WindowSystem::~WindowSystem()
 
 bool WindowSystem::Init()
 {
+    if (!ConfigManager::LoadConfig())
+    {
+        Util::LogError("Failed to load config file. Check its availability");
+        return false;
+    }
+    isFullScreen = ConfigManager::GetBool("Display", "full_screen_mode");
+
     if (!glfwInit())
     {
         Util::LogError("GLFW Init error");
@@ -26,7 +32,11 @@ bool WindowSystem::Init()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    window = glfwCreateWindow(800, 600, title.c_str(), nullptr, nullptr);
+    if (isFullScreen)
+        Util::Log("Entered full screen mode");
+    else
+        Util::Log("Entered windowed mode");
+    window = glfwCreateWindow(800, 600, title.c_str(), isFullScreen ? glfwGetPrimaryMonitor() : nullptr, nullptr);
     if (!window)
     {
         Util::LogError("Failed to create GLFW window");
