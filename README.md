@@ -5,7 +5,8 @@ Be(come) the most powerful C/C++ developer / Train the game engine developing sk
 
 # Compile
 <code>cmake . && make</code> (the build file will be saved to build/ folder)<br />
-<code>cmake . && make run</code> (RUN)
+<code>cmake . && make run</code> (RUN)<br />
+<code>make cleanup</code> (clean all the CMake files, the target named **cleanup** instead of *clean*)
 
 # Requirements
 OpenGL + GLFW3
