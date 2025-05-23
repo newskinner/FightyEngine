@@ -6,8 +6,6 @@
 #include <filesystem>
 #include <string>
 
-using std::filesystem::path;
-
 namespace ConfigManager
 {
     bool LoadConfig();
