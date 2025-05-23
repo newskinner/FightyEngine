@@ -2,11 +2,8 @@
 
 namespace Util
 {
-    std::string GetCurrentTime(std::string format)
+    std::string GetCurrentTime(std::string format = "%Y-%m-%d %H:%M:%S")
     {
-        if (format == "default")
-            format = "%Y-%m-%d %H:%M:%S";
-
         auto now = std::chrono::system_clock::now();
         std::time_t now_c = std::chrono::system_clock::to_time_t(now);
         std::tm *now_tm = std::localtime(&now_c);
@@ -18,7 +15,7 @@ namespace Util
 
     void Log(const std::string &message)
     {
-        std::string time = GetCurrentTime("default");
+        std::string time = GetCurrentTime();
         if (!time.empty())
         {
             std::cout << "[INFO] | " << time << "] " << message << std::endl;
@@ -31,7 +28,7 @@ namespace Util
 
     int LogError(const std::string &errorMessage)
     {
-        std::string time = GetCurrentTime("default");
+        std::string time = GetCurrentTime();
         if (!time.empty())
         {
             std::cerr << "[ERROR | " << time << "] " << errorMessage << std::endl;
