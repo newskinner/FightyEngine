@@ -21,6 +21,7 @@ bool WindowSystem::Init()
         return false;
     }
     isFullScreen = ConfigManager::GetBool("Display", "full_screen_mode");
+    isVsyncOn = ConfigManager::GetBool("Display", "vsync");
 
     if (!glfwInit())
     {
