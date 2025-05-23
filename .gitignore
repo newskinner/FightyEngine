@@ -62,7 +62,7 @@ gen/
 out/
 
 .gradle/
-build/
+# build/ COMMENTED BECAUSE OF INSERTED GITIGNORE
 
 local.properties
 
@@ -253,7 +253,6 @@ tmtags
 **/nbproject/private/
 **/nbproject/Makefile-*.mk
 **/nbproject/Package-*.bash
-build/
 nbbuild/
 dist/
 nbdist/
@@ -375,7 +374,7 @@ ui_*.h
 *.qmlc
 *.jsc
 Makefile*
-*build-*
+# *build-*
 *.qm
 *.prl
 
@@ -657,8 +656,8 @@ MigrationBackup/
 FodyWeavers.xsd
 
 .gradle
-**/build/
-!src/**/build/
+# **/build/
+# !src/**/build/
 
 gradle-app.setting
 

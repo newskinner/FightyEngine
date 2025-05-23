@@ -5,14 +5,14 @@ project(
     LANGUAGES CXX
 )
 
-file(GLOB_RECURSE graphics_sources      src/graphics/*.cpp src/graphics/*.h)
-file(GLOB_RECURSE core_sources          src/miacra/*.cpp src/miacra/*.h)
-set(main                                src/main.cpp)
+file(GLOB_RECURSE graphics_sources      FightyEngine/graphics/*.cpp FightyEngine/graphics/*.h)
+file(GLOB_RECURSE core_sources          FightyEngine/miacra/*.cpp FightyEngine/miacra/*.h)
+set(main                                FightyEngine/main.cpp)
 
 add_executable(engine ${graphics_sources} ${core_sources} ${main})
 set_target_properties(engine PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)
 target_compile_options(engine PUBLIC -I/usr/include/freetype2 -I/usr/include/glm -lglfw -lGL -lfreetype -ldl -pthread)
-target_include_directories(engine PUBLIC src)
+target_include_directories(engine PUBLIC FightyEngine)
 
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
