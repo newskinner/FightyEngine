@@ -2,10 +2,8 @@
 
 namespace Util
 {
-    std::string GetCurrentTime(std::string &format)
+    std::string GetCurrentTime(std::string format)
     {
-        if (format == nullptr)
-            return std::string();
         if (format == "default")
             format = "%Y-%m-%d %H:%M:%S";
 
