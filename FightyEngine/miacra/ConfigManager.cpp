@@ -2,7 +2,6 @@
 
 using std::string;
 using std::unordered_map;
-namespace fs = std::filesystem;
 
 namespace ConfigManager
 {
