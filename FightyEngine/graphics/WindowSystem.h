@@ -18,9 +18,9 @@ public:
     bool IsKeyPressed(int key) const;
     void SetTitle(const std::string &newTitle);
 
-    bool isFullScreen;
-
 private:
     std::string title;
+    bool isFullScreen;
+    bool isVsyncOn;
     GLFWwindow *window;
 };
