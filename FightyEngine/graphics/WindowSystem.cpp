@@ -3,7 +3,8 @@
 WindowSystem::WindowSystem() : title(std::string()), window(nullptr)
 {
     const std::string year = Util::GetCurrentTime("%Y");
-    SetTitle("Fighty 3D FPS (" + year + ") by NEWSKINNER. The AGPL-3.0 LICENSE");
+    const std::string windowTitle = "Fighty 3D FPS © (" + year + ") by NEWSKINNER. The AGPL-3.0 LICENSE";
+    SetTitle(windowTitle);
 }
 
 WindowSystem::~WindowSystem()
