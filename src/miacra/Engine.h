@@ -18,8 +18,6 @@ public:
   void Run();
   void Shutdown();
 
-  void SetTitle(const std::string &newGameTitle);
-
 private:
   void ProcessInput();
   void Update(float deltaTime);

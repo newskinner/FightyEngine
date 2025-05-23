@@ -73,10 +73,3 @@ void Engine::Render()
 {
   renderer->Clear();
 }
-
-void Engine::SetTitle(const std::string &newGameTitle)
-{
-  title = newGameTitle;
-  if (windowSystem)
-    windowSystem->SetTitle(title);
-}
