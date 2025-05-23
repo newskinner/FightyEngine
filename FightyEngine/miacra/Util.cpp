@@ -2,7 +2,7 @@
 
 namespace Util
 {
-    std::string GetCurrentTime(const char *format)
+    std::string GetCurrentTime(std::string &format)
     {
         if (format == nullptr)
             return std::string();
@@ -13,7 +13,7 @@ namespace Util
         std::time_t now_c = std::chrono::system_clock::to_time_t(now);
         std::tm *now_tm = std::localtime(&now_c);
         std::ostringstream s_stream;
-        s_stream << std::put_time(now_tm, format);
+        s_stream << std::put_time(now_tm, format.c_str());
 
         return s_stream.str();
     }
