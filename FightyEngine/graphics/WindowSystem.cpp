@@ -3,7 +3,7 @@
 WindowSystem::WindowSystem() : title(std::string()), window(nullptr)
 {
     const std::string year = Util::GetCurrentTime("%Y");
-    const std::string windowTitle = "Fighty 3D FPS © (" + year + ") by NEWSKINNER. The AGPL-3.0 LICENSE";
+    const std::string windowTitle = "Fighty 3D FPS © (" + year + ") by NEWSKINNER. ALL RIGHTS RESERVED";
     SetTitle(windowTitle);
 }
 
@@ -21,8 +21,10 @@ bool WindowSystem::Init()
         Util::LogError("Failed to load config file. Check its availability");
         return false;
     }
+    /////////////
     isFullScreen = ConfigManager::GetBool("Display", "full_screen_mode");
     isVsyncOn = ConfigManager::GetBool("Display", "vsync");
+    /////////////
 
     if (!glfwInit())
     {
@@ -74,4 +76,16 @@ void WindowSystem::SetTitle(const std::string &newTitle)
     title = newTitle;
     if (window)
         glfwSetWindowTitle(window, title.c_str());
+}
+
+void WindowSystem::SetFullScreen(bool active)
+{
+    isFullScreen = active;
+    ConfigManager::SetValue("Display", "full_screen_mode", active ? "true" : "false");
+}
+
+void WindowSystem::SetVsync(bool active)
+{
+    isVsyncOn = active;
+    ConfigManager::SetValue("Display", "vsync", active ? "true" : "false");
 }

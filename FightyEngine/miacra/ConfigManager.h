@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <filesystem>
 #include <string>
+#include <fstream>
 
 namespace ConfigManager
 {
@@ -12,4 +13,8 @@ namespace ConfigManager
 
     bool GetBool(const std::string &section, const std::string &name, bool defaultValue = false);
     std::string GetString(const std::string &section, const std::string &name, const std::string &defaultValue = "");
+
+    void SetValue(const std::string &section, const std::string &name, const std::string &newValue);
+
+    void SaveConfig();
 }

@@ -72,4 +72,5 @@ void Engine::Update(float deltaTime)
 void Engine::Render()
 {
   renderer->Clear();
+  renderer->Render();
 }

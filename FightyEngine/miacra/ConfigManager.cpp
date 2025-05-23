@@ -7,10 +7,10 @@ using std::filesystem::path;
 namespace ConfigManager
 {
     static unordered_map<string, string> configValues;
+    const path config_file = path("config") / "cfg.ini";
 
     bool LoadConfig()
     {
-        path config_file = path("config") / "cfg.ini";
         configValues.clear();
 
         auto handler = [](void *user, const char *section, const char *name, const char *value) -> int
@@ -48,5 +48,47 @@ namespace ConfigManager
         string key = section + "." + name;
         auto it = configValues.find(key);
         return (it != configValues.end()) ? it->second : defaultValue;
+    }
+
+    void SetValue(const string &section, const string &name, const string &newValue)
+    {
+        string key = section + "." + name;
+        configValues[key] = newValue;
+        Util::Log("[Config] Set " + key + " = " + newValue);
+        SaveConfig();
+    }
+
+    void SaveConfig()
+    {
+        std::unordered_map<string, unordered_map<string, string>> sectioned;
+        for (const auto &kv : configValues)
+        {
+            size_t dotPos = kv.first.find('.');
+            if (dotPos != string::npos)
+            {
+                string section = kv.first.substr(0, dotPos);
+                string name = kv.first.substr(dotPos + 1);
+                sectioned[section][name] = kv.second;
+            }
+        }
+
+        std::ofstream file(config_file);
+        if (!file.is_open())
+        {
+            Util::LogError("Failed to save INI file: " + config_file.string());
+            return;
+        }
+
+        for (const auto &[section, entries] : sectioned)
+        {
+            file << "[" << section << "]\n";
+            for (const auto &[name, value] : entries)
+            {
+                file << name << "=" << value << "\n";
+            }
+            file << "\n";
+        }
+
+        Util::Log("[Config] Saved config to " + config_file.string());
     }
 }

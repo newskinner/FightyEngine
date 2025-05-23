@@ -16,7 +16,10 @@ public:
     void PollEvents();
     bool ShouldClose() const;
     bool IsKeyPressed(int key) const;
+
     void SetTitle(const std::string &newTitle);
+    void SetFullScreen(bool active);
+    void SetVsync(bool active);
 
 private:
     std::string title;
