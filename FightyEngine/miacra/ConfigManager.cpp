@@ -31,7 +31,7 @@ namespace ConfigManager
         return true;
     }
 
-    bool GetBool(const string &section, const string &name, bool defaultValue)
+    bool GetBool(const string &section, const string &name, bool defaultValue) const
     {
         string key = section + "." + name;
         auto it = configValues.find(key);
@@ -43,7 +43,7 @@ namespace ConfigManager
         return defaultValue;
     }
 
-    string GetString(const string &section, const string &name, const string &defaultValue)
+    string GetString(const string &section, const string &name, const string &defaultValue) const
     {
         string key = section + "." + name;
         auto it = configValues.find(key);
