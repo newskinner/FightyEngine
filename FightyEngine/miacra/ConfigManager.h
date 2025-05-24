@@ -11,8 +11,8 @@ namespace ConfigManager
 {
     bool LoadConfig();
 
-    bool GetBool(const std::string &section, const std::string &name, bool defaultValue = false);
-    std::string GetString(const std::string &section, const std::string &name, const std::string &defaultValue = "");
+    bool GetBool(const std::string &section, const std::string &name, bool defaultValue = false) const;
+    std::string GetString(const std::string &section, const std::string &name, const std::string &defaultValue = "") const;
 
     void SetValue(const std::string &section, const std::string &name, const std::string &newValue);
 
